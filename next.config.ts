@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   basePath: isProduction ? "/perfect-match" : "",
   assetPrefix: isProduction ? "/perfect-match/" : "",
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isProduction ? "/perfect-match" : "",
+  },
   images: {
     unoptimized: true,
   },

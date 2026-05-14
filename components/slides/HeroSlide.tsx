@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { easeOutSoft } from "@/lib/easing";
 import { useMediaQuery } from "@/lib/useMediaQuery";
 
-const HERO_COVER = "/cover.png";
+const HERO_COVER = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/cover.png`;
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 18 },
