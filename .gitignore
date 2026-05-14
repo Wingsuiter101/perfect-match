@@ -1,0 +1,11 @@
+.next/
+out/
+node_modules/
+
+*.tsbuildinfo
+
+.env*
+!.env.example
+
+.DS_Store
+Thumbs.db

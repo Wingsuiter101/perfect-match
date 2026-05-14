@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap");
+
+@import "tailwindcss";
+
+:root {
+  --bg: #0b0b0b;
+  --surface: #111111;
+  --surface-2: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #f5f2ed;
+  --text-muted: #8f8980;
+  --text-secondary: #b5ada5;
+  --accent: #c9a96e;
+  --accent-dim: rgba(201, 169, 110, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  background: var(--bg);
+}
+
+html,
+body {
+  color: var(--text);
+  font-family: "DM Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  min-height: 100%;
+  min-height: 100dvh;
+  overflow: hidden;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "DM Serif Display", Georgia, serif;
+}
+
+::selection {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.slide-number {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.accent-line {
+  width: 36px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.border-subtle {
+  border: 1px solid var(--border);
+}
+
+/* —— Pitch deck: responsive padding + notches —— */
+.deck-pad {
+  box-sizing: border-box;
+  padding-top: max(20px, env(safe-area-inset-top, 0px));
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+  padding-bottom: 28px;
+  -webkit-overflow-scrolling: touch;
+  min-height: 0;
+  /* Mobile: start from top so scrollable slides aren’t top/bottom cropped (flex centering bug). */
+  justify-content: flex-start;
+}
+
+@media (min-width: 640px) {
+  .deck-pad {
+    padding-left: max(32px, env(safe-area-inset-left, 0px));
+    padding-right: max(32px, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 900px) {
+  .deck-pad {
+    padding-left: max(64px, env(safe-area-inset-left, 0px));
+    padding-right: max(64px, env(safe-area-inset-right, 0px));
+    padding-bottom: 32px;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .deck-pad {
+    padding-left: max(80px, env(safe-area-inset-left, 0px));
+    padding-right: max(80px, env(safe-area-inset-right, 0px));
+  }
+}
+
+/* Room for bottom nav (dots + arrows) on small / tablet */
+@media (max-width: 899px) {
+  .deck-pad {
+    padding-top: max(16px, calc(env(safe-area-inset-top, 0px) + 8px));
+    padding-bottom: max(132px, calc(env(safe-area-inset-bottom, 0px) + 110px));
+  }
+}
+
+/* vh + dvh only — -webkit-fill-available as height on generic divs has collapsed layout to 0 in Chrome/Edge. */
+.pitch-deck-viewport {
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  position: relative;
+}
